@@ -1,0 +1,200 @@
+[
+    {
+        "id": 1,
+        "categorie": "Cultura", 
+        "dificultate": "Usor",
+        "intrebare": "Cine este autorul picturii Mona Lisa?",
+        "lista" : [
+            "Leonardo da Vinci",
+             "Alexei Mateevici", 
+             "Ivan Aivazovsky" ,
+             "Vincent Van Gogh"
+        ],
+        "raspunsul" : "Leonardo da Vinci"
+
+    },
+    {
+        "id":2,
+        "categorie": "Cultura",
+        "dificultate": "Usor",
+        "intrebare": "Inginerul Turnului Eiffel este ...",
+        "lista": [
+            "Nikola Tesla",
+            "Gustave Eiffel",
+            "Frédéric Auguste Bartholdi",
+            "Richard Morris Hunt"
+        ],
+        "raspunsul": "Gustave Eiffel"
+    },
+    {
+        "id": 3,
+        "categorie": "Cultura",
+        "dificultate": "Mediu",
+        "intrebare": "Emile Zola a scris opera ...",
+        "lista": [
+            "Madam Bovary",
+            "Baltagul",
+            "La \"Paradisul femeilor\"",
+            "Marile sperante"
+        ],
+        "raspunsul": "La \"Paradisul femeilor\""
+    },
+
+    {
+        "id": 4,
+        "categorie": "Cultura",
+        "dificultate": "Mediu",
+        "intrebare": "Care este mesajul operei \"Marile sperante\" de Charles Dickens?",
+        "lista": [
+            "Exista noroc si poti sa o dai de ea oricand",
+            "Sa fii un gentlemen e o oportunitate avantajoasa",
+            "Valorile umane sunt mai presus decat viciile si cele materiale",
+            "Mereu sa prinzi clipa"
+        ],
+        "raspunsul": "Valorile umane sunt mai presus decat viciile si cele materiale"
+    },
+    {
+        "id": 5,
+        "categorie": "Cultura",
+        "dificultate": "Dificil",
+        "intrebare": "Filosoful postmodernismului este ...",
+        "lista": [
+            "Nikolai Gogol",
+            "Andy Warhol",
+            "Roy Lichtenstein",
+            "Jean-François Lyotard"
+        ],
+        "raspunsul": "Jean-François Lyotard"
+    },
+    {
+        "id": 6,
+        "categorie": "Stiinta",
+        "dificultate": "Usor",
+        "intrebare": "Cate planete sunt in Sistemul Solar?",
+        "lista": [
+            "9",
+            "8",
+            "10",
+            "20"
+        ],
+        "raspunsul": "8"
+    },
+    {
+        "id": 7,
+        "categorie": "Stiinta",
+        "dificultate": "Usor",
+        "intrebare": "Plantele elimina ...",
+        "lista": [
+            "Apa",
+            "Sol",
+            "Oxigen",
+            "Aer"
+        ],
+        "raspunsul": "Oxigen"
+    },
+    {
+        "id": 8,
+        "categorie": "Stiinta",
+        "dificultate": "Mediu",
+        "intrebare": "Cum se numeste sistemul care are rolul de a percepe sunetele?",
+        "lista": [
+            "Sistemul olfactiv",
+            "Sistemul digestiv",
+            "Sistemul auditiv",
+            "Sistemul respirator"
+        ],
+        "raspunsul": "Sistemul auditiv"
+    },
+    {
+        "id": 9,
+        "categorie": "Stiinta",
+        "dificultate": "Mediu",
+        "intrebare" : "Leucocitele, trombocitele, eritrocitele sunt ...",
+        "lista": [
+            "Elemente figurate",
+            "Nuclee",
+            "Substante",
+            "Acizi nucleici"
+        ],
+        "raspunsul": "Elemente figurate"
+    },
+    {
+        "id": 10,
+        "categorie": "Stiinta",
+        "dificultate": "Dificil",
+        "intrebare": "Denumirea muschiului gatului este compusa din ...",
+        "lista": [
+            "3 muschi",
+            "3 oase",
+            "3 glande",
+            "3 tendoane"
+        ],
+        "raspunsul": "3 oase"
+    },
+
+{
+    "id": 11,
+    "categorie": "Sport",
+    "dificultate": "Usor",
+    "intrebare": "De regula voleiul se joaca intre ...",
+    "lista": [
+        "partcicipanti in cerc",
+        "2 persoane",
+        "3 echipe a cate 4 jucatori",
+        "2 echipe a cate 6 jucatori fiecare"
+    ],
+    "raspunsul": "2 echipe a cate 6 jucatori fiecare"
+},
+    {
+        "id": 12,
+        "categorie": "Sport",
+        "dificultate": "Usor",
+        "intrebare": "Echipa castigatoare in fotbal este cea care ...",
+        "lista": [
+            "joaca cel mai performant",
+            "alearga cel mai bine",
+            "acumuleaza cele mai multe goluri",
+            "acumuleaza cele mai putine goluri"
+        ],
+        "raspunsul": "acumuleaza cele mai multe goluri"
+    },
+    {
+        "id": 13,
+        "categorie":"Sport",
+        "dificultate":"Mediu",
+        "intrebare":"Renumitul fotbalist este ...",
+        "lista": [
+            "Michael Jackson",
+            "Cristiano Ronaldo",
+            "Cristian Tanase",
+            "Dorinel Munteanu"
+        ],
+        "raspunsul": "Cristiano Ronaldo"
+    },
+    {
+        "id": 14,
+        "categorie": "Sport",
+        "dificultate": "Mediu",
+        "intrebare": "Fost boxer roman care joaca in filme este ...",
+        "lista": [
+            "Florian Munteanu",
+            "Cristian Perepeliuc",
+            "Mihai Adam",
+            "Nicolae Puiu"
+        ],
+        "raspunsul": "Florian Munteanu"
+    },
+    {
+        "id": 15,
+        "categorie": "Sport",
+        "dificultate": "Dificil",
+        "intrebare": "Inotatoare renumita din Moldova este ...",
+        "lista": [
+            "Tatiana Salcutan",
+            "Anna Dulce",
+            "Dimitriana Bezede",
+            "Valentina Enachi"
+        ],
+        "raspunsul": "Tatiana Salcutan"
+    }
+]
