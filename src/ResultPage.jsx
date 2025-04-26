@@ -1,73 +1,96 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from './Button.jsx';
+
+
+function safeJSONParse(data, fallback) {
+  try {
+    if (!data || data === 'undefined' || data === 'null') {
+      return fallback;
+    }
+    return JSON.parse(data);
+  } catch (error) {
+    console.error('Eroare la parsarea JSON:', error);
+    return fallback;
+  }
+}
 
 function ResultPage() {
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [highestScores, setHighestScores] = useState({});
-  const navigate = useNavigate();
+
 
   useEffect(() => {
-    const storedAnswers = JSON.parse(sessionStorage.getItem('userAnswers')) || [];
+    const storedAnswersRaw = sessionStorage.getItem('userAnswers');
+    const storedAnswers = safeJSONParse(storedAnswersRaw, []);
+
     const username = sessionStorage.getItem('username') || 'guest';
 
-    setUserAnswers(storedAnswers);
-    const correctCount = storedAnswers.filter(
-      item => item.userAnswer === item.correctAnswer
-    ).length;
-    setScore(correctCount);
+      const storedScoresRaw = localStorage.getItem('allScores');
+      const parsedScores = safeJSONParse(storedScoresRaw, {});
+      setHighestScores(parsedScores);
 
-    // actualizare scoruri în localStorage
-    const localScores = JSON.parse(localStorage.getItem('highestScores')) || {};
-    const currentBest = localScores[username] || 0;
+      if(storedAnswers.length > 0) {
+        setUserAnswers(storedAnswers);
+        const correctCount = storedAnswers.filter(item => item.userAnswer === item.correctAnswer).length;
+        setScore(correctCount);
+        if (!parsedScores[username]) {
+          parsedScores[username] = [];
+        }
 
-    if (correctCount > currentBest) {
-      localScores[username] = correctCount;
-      localStorage.setItem('highestScores', JSON.stringify(localScores));
-    }
-
-    setHighestScores(localScores);
+        const alreadySaved = parsedScores[username].includes(correctCount);
+        if (!alreadySaved) {
+          parsedScores[username].push(correctCount);
+          localStorage.setItem('allScores', JSON.stringify(parsedScores));
+        }
+        setHighestScores(parsedScores);
+      }
   }, []);
 
-  const goToStart = () => {
-    navigate('/');
-  };
+
 
   return (
     <div>
-      <h2>Scorul final: {score} / {userAnswers.length}</h2>
-      <h3>Răspunsurile tale:</h3>
-      {userAnswers.map((item, index) => (
-        <div key={index} style={{ marginBottom: '1rem' }}>
-          <p><strong>Întrebare:</strong> {item.question}</p>
-          <p style={{ color: item.userAnswer === item.correctAnswer ? 'green' : 'red' }}>
-            <strong>Răspunsul tău:</strong> {item.userAnswer}
-          </p>
-          <p><strong>Răspuns corect:</strong> {item.correctAnswer}</p>
-        </div>
-      ))}
-
-      <h3>Istoric scoruri (Highest Score):</h3>
+      <h2>Scorul final: {score} / 15</h2>
+  
+      {userAnswers.length > 0 ? (
+        <>
+          <h3>Răspunsurile tale:</h3>
+          {userAnswers.map((item, index) => (
+            <div key={index} style={{ marginBottom: '1rem' }}>
+              <p><strong>Întrebare:</strong> {item.question}</p>
+              <p style={{ color: item.userAnswer === item.correctAnswer ? 'green' : 'red' }}>
+                <strong>Răspunsul tău:</strong> {item.userAnswer}
+              </p>
+              <p><strong>Răspuns corect:</strong> {item.correctAnswer}</p>
+            </div>
+          ))}
+        </>
+      ) : (
+        <p>Nu există răspunsuri de afișat.</p>
+      )}
+  
+      <h3>Istoric scoruri:</h3>
       <table border="1" cellPadding="5">
         <thead>
           <tr>
             <th>Username</th>
-            <th>Scor maxim</th>
+            <th>Scorurile</th>
           </tr>
         </thead>
         <tbody>
-          {Object.entries(highestScores).map(([username, score]) => (
+          {Object.entries(highestScores).map(([username, scores]) => (
             <tr key={username}>
               <td>{username}</td>
-              <td>{score}</td>
+              <td>{scores.join(", ")}</td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <button onClick={goToStart}>Înapoi la pagina de start</button>
+  
     </div>
   );
+  
 }
 
 export default ResultPage;

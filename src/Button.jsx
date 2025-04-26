@@ -1,5 +1,17 @@
 import './App.css'
 
-export const Button = ({onClick, children}) => {
-return <button className='button' onClick={onClick}>{children}</button>
-}
+import { useContext } from 'react';
+import { ThemeContext } from './tema/ThemeContext';
+
+export const Button = ({ children, ...props }) => {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <button
+      {...props}
+      className={theme === 'dark' ? 'buttondark' : 'button'}
+    >
+      {children}
+    </button>
+  );
+};

@@ -1,7 +1,8 @@
 import './App.css'
 import questions from './data/intrebari.json';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {ThemeContext} from './tema/ThemeContext.jsx';
 
 
 function QuestionPage() {
@@ -14,6 +15,7 @@ function QuestionPage() {
     const [showResult, setShowResult] = useState(false);
     const [timeLeft, setTimeLeft] = useState(10);
     const navigate = useNavigate();
+    const {theme} = useContext(ThemeContext);
     const timpLimita = sessionStorage.getItem('limita');
 
 
@@ -24,6 +26,17 @@ function QuestionPage() {
         if(!showResult) {
             setShowResult(true);
             setSelectedAnswer(null);
+
+            setTimeout(() => {
+                if(currentIndex === questionurl.length - 1) {
+                    navigate('/rezultate');
+                } else {
+                    setSelectedAnswer(null);
+                    setShowResult(false);
+                    setTimeLeft(10);
+                    setCurrentIndex((prev) => prev + 1);
+                }
+            }, 3000);
         }
     };
 
@@ -56,6 +69,18 @@ function QuestionPage() {
     });
     sessionStorage.setItem('userAnswers', JSON.stringify(userAnswers));
 
+    if (timpLimita !== 'Nelimitat') {
+        setTimeout(() => {
+            if (currentIndex === questionurl.length - 1) {
+                navigate('/rezultate');
+            } else {
+                setSelectedAnswer(null);
+                setShowResult(false);
+                setTimeLeft(10);
+                setCurrentIndex((prev) => prev + 1);
+            }
+        }, 3000);
+    }
 
    };
    const nextQuestion = () => {
@@ -80,11 +105,16 @@ function QuestionPage() {
                 <span>Timp ramas: {timeLeft} secunde</span>
             )}
             <p>Categorie: {currentQuestion.categorie} | Dificultate: {currentQuestion.dificultate}</p>
-            <div>
+            <div key={theme}>
                 {currentQuestion.lista.map((option, index) => (
-                    <button key={index} onClick={() => handleAnswerClick(option)} disabled={showResult}
+                    <button key={`${index}-${theme}`} onClick={() => handleAnswerClick(option)} disabled={showResult}
                     className={`
-                        p-2 m-1 rounded border 
+                          w-full sm:w-1/2 md:w-1/3 lg:w-1/4
+                            p-2 sm:p-3 md:p-4
+                                        text-sm sm:text-base md:text-lg
+                                     rounded-xl
+                                             transition-all duration-300              
+                        ${theme === 'dark' ? 'selectdark' : 'selectlight'}
                         ${showResult && option === currentQuestion.raspunsul ? 'bg-green-200' : ''}
                         ${showResult && selectedAnswer === option && selectedAnswer !== currentQuestion.raspunsul ? 'bg-red-200' : ''}
                       `}>
@@ -97,7 +127,11 @@ function QuestionPage() {
                     <p className={`font-semibold ${selectedAnswer === currentQuestion.raspunsul ? 'text-green-600' : 'text-red-600'}`}>
               {selectedAnswer === currentQuestion.raspunsul ? 'Corect!' : `Greșit! Răspunsul corect este: ${currentQuestion.raspunsul}`}
             </p>
-            <button onClick={nextQuestion}>{currentIndex === questionurl.length - 1 ? 'Vezi scorul' : 'Urmatoarea intrebare' }</button>
+            {timpLimita === 'Nelimitat' && (
+        <button onClick={nextQuestion} className={theme === 'dark' ? 'selectdark' : 'selectlight'}>
+            {currentIndex === questionurl.length - 1 ? 'Vezi scorul' : 'Urmatoarea intrebare' }
+        </button>
+            )}
                 </div>
             )}
       

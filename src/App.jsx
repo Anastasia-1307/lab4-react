@@ -6,12 +6,13 @@ import ShowTheme from './tema/ShowTheme.jsx';
 import SwitchTheme from './tema/SwitchTheme.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useContext } from 'react';
+import ButtonStartPage from  './ButtonStartPage.jsx';
 
 function AppContent() {
-  const { isDarkTheme } = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
 
   return (
-    <div className={isDarkTheme ? 'dark' : 'light'}>
+    <div className={theme ? 'dark' : 'light'}>
       <SwitchTheme />
       <ShowTheme />
       <Routes>
@@ -27,6 +28,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ButtonStartPage />
         <AppContent />
       </Router>
     </ThemeProvider>

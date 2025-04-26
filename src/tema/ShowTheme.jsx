@@ -3,8 +3,8 @@ import {ThemeContext} from "./ThemeContext.jsx";
 import '../App.css'
 
 function ShowTheme() {
-    const {isDarkTheme} = useContext(ThemeContext);
-    return <div>Modul curent {isDarkTheme ? "dark" : "light"}</div>;
+    const {theme} = useContext(ThemeContext);
+    return <div className="divmod">Modul curent {theme === 'dark' ? 'dark' : 'light'}</div>;
 }
 
 export default ShowTheme;

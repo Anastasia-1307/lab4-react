@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import { ThemeContext } from './ThemeContext';
+import {Button} from '../Button.jsx';
 
 function SwitchTheme() {
     const {toggleTheme} = useContext(ThemeContext);
     return (
         <div>
-            <button onClick={toggleTheme}>Schimba tema</button>
+            <Button onClick={toggleTheme} className="button" data-role="theme-button">Schimba tema</Button>
         </div>
     );
 }

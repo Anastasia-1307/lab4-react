@@ -1,50 +1,80 @@
 body.light {
-    background-color: white;
-    color: black;
+ 
+  background-color: white;
+  color:black;
+  font-size: 16px;
+
+
 }
 
 body.dark {
-    background-color: rgba(86, 82, 82, 0.855);
-    color: black;
+  background-color: rgba(11, 7, 3, 0.248);
+  color: beige;
+  font-size: 16px;
+}
+.card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  font-size: large;
+ 
+}
 
+.light .card {
+  background-color: beige;
+  color: black;
+}
+
+.dark .card {
+  background-color: rgba(11, 7, 3, 0.248);
+  color: rgb(111, 111, 11);
+}
+
+.button,
+.buttondark,
+.submit,
+.temabutton {
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px auto;
+  display: inline-block;
 }
 
 .button {
-    border-radius: 5px;
-    text-align: center;
-    background-color: beige;
-    padding: 10px;
+  background-color: beige;
+}
 
+.buttondark {
+  background-color: rgb(136, 222, 188);
 }
 
 .submit {
-border-radius: 20px;
-text-align:center;
-background-color: black;
-color: white;
+  background-color: black;
+  color: white;
 }
-.form {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px; 
+
+.temabutton {
+  background-color: beige;
 }
 
 .error {
-    color: red ;
+  color: red;
 }
 
-.card {
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 2rem auto;
-    background-color: white;
-  }
+.selectdark {
+  border-radius: 5px;
+  background-color: rgb(190, 230, 123);
+  color: rgb(111, 111, 11);
+}
+
+.selectlight {
+  border-radius: 5px;
+  background-color: lightblue;
+  color: black; 
+}
 
   .bg-green-200 {
     background-color: #d1fae5;
@@ -55,7 +85,7 @@ color: white;
   }
   
   .text-green-600 {
-    color: #059669;
+    color: #05cb8c;
   }
   
   .text-red-600 {
@@ -65,3 +95,79 @@ color: white;
   .font-semibold {
     font-weight: 600;
   }
+  @media (min-width: 375px) and (max-width: 479px){
+    .card {
+      max-width: 450px;
+      font-size: 12px;
+      padding: 10px;
+    }
+    button {
+      display: block;
+     
+    }
+    .button,
+    .buttondark,
+    .submit,
+    .temabutton {
+      border-radius: 10px;
+      text-align: center;
+      margin: 10px;
+      display: block;
+    }
+    .divmod{
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+  }
+ 
+@media (min-width: 480px) and (max-width: 767px){
+  .card {
+    max-width: 550px;
+    font-size: 16px;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .button,
+.buttondark,
+.submit,
+.temabutton  {
+  border-radius: 10px;
+  text-align: center;
+  padding: 6px;
+  margin: 10px auto;
+  display: block;
+}
+.divmod{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+}
+@media (min-width: 768px) {
+  .card {
+    max-width: 850px;
+    font-size: 18px;
+    padding: 30px;
+  }
+
+  .button,
+.buttondark,
+.submit,
+.temabutton {
+  border-radius: 10px;
+  text-align: center;
+  padding: 8px;
+  margin: 10px auto;
+  display: inline-block;
+}
+.divmod {
+  display: inline-block;
+}
+}
